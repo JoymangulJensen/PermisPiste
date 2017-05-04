@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/permispiste</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <mapping class="com.permispiste.model.ActionEntity"/>
+        <mapping class="com.permispiste.model.AppartientEntity"/>
+        <mapping class="com.permispiste.model.ApprenantEntity"/>
+        <mapping class="com.permispiste.model.EstAssocieEntity"/>
+        <mapping class="com.permispiste.model.FixeEntity"/>
+        <mapping class="com.permispiste.model.IndicateurEntity"/>
+        <mapping class="com.permispiste.model.InscriptionEntity"/>
+        <mapping class="com.permispiste.model.JeuEntity"/>
+        <mapping class="com.permispiste.model.MissionEntity"/>
+        <mapping class="com.permispiste.model.ObjectifEntity"/>
+        <mapping class="com.permispiste.model.ObtientEntity"/>
+
+        <property name="hibernate.connection.username">userepul</property>
+        <property name="hibernate.connection.password">epul</property>
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

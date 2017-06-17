@@ -4,9 +4,13 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-
         <property name="connection.url">jdbc:mysql://mysqldb.cunjdyumorho.eu-central-1.rds.amazonaws.com:3306/permispiste</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.username">userepul</property>
+        <property name="hibernate.connection.password">epul</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
         <mapping class="com.permispiste.model.ActionEntity"/>
         <mapping class="com.permispiste.model.AppartientEntity"/>
         <mapping class="com.permispiste.model.ApprenantEntity"/>
@@ -19,8 +23,9 @@
         <mapping class="com.permispiste.model.ObjectifEntity"/>
         <mapping class="com.permispiste.model.ObtientEntity"/>
 
-        <property name="hibernate.connection.username">userepul</property>
-        <property name="hibernate.connection.password">epul</property>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

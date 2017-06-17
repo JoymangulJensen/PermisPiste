@@ -18,6 +18,7 @@ public class ServiceHibernate {
             sessionFactory = new Configuration().configure().buildSessionFactory();
             // Le fichier est lu
         } catch (HibernateException ex) {
+            System.out.println("werjghnjeur");
             throw new ServiceHibernateException("Impossible de construire la SessionFactory: "
                     + ex.getMessage(), ex);
         }
@@ -35,7 +36,7 @@ public class ServiceHibernate {
                 session.set(s);
             }
         } catch (HibernateException ex) {
-            throw new ServiceHibernateException("Impossible d'acc�der � la SessionFactory: "
+            throw new ServiceHibernateException("Cannot access SessionFactory: "
                     + ex.getMessage(), ex);
         }
         return s;
@@ -49,7 +50,7 @@ public class ServiceHibernate {
             if (s != null)
                 s.close();
         } catch (HibernateException ex) {
-            throw new ServiceHibernateException("Impossible de fermer la SessionFactory: "
+            throw new ServiceHibernateException("Cannot access SessionFactory: "
                     + ex.getMessage(), ex);
         }
     }

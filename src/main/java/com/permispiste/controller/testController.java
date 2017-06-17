@@ -4,7 +4,6 @@ import com.permispiste.dao.Service;
 import com.permispiste.errorhandlers.ServiceHibernateException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,8 +34,8 @@ public class testController {
     // /
     // / Affichage de la page d'accueil
     // /
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new ModelAndView("dashboard");
-    }
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//        return new ModelAndView("home");
+//    }
 }

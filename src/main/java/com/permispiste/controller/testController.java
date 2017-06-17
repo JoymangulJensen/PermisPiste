@@ -37,6 +37,6 @@ public class testController {
     // /
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new ModelAndView("home");
+        return new ModelAndView("dashboard");
     }
 }

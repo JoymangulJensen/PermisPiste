@@ -1160,10 +1160,10 @@ textarea.form-control {
   font-size: 16px;
   z-index: 3; }
   .navbar .navbar-brand {
-    font-weight: 600;
+    font-weight: 700;
     margin: 5px 0px;
-    padding: 20px 15px;
-    font-size: 20px; }
+    padding: 35px 25px;
+    font-size: 40px; }
   .navbar .navbar-nav > li > a {
     line-height: 1.42857;
     margin: 15px 0px;
@@ -1186,7 +1186,7 @@ textarea.form-control {
 
 .navbar-nav > li > .dropdown-menu {
   border-radius: 6px;
-  margin-top: -5px; }
+  margin-top: 5px; }
 
 .navbar-default {
   background-color: #f4f3ef;

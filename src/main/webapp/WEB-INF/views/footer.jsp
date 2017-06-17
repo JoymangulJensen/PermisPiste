@@ -67,10 +67,12 @@
 
         }, {
             type: 'success',
-            timer: 4000
+            timer: 2000
         });
 
     });
 </script>
 
 </html>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>

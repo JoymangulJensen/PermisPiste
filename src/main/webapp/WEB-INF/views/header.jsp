@@ -1,38 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
     <title>Paper Dashboard by Creative Tim</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
 
 
     <!-- Bootstrap core CSS     -->
-    <spring:url value="/resources/assets/css/bootstrap.min.css" var="bootstrapMinCss" />
-    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <spring:url value="/resources/assets/css/bootstrap.min.css" var="bootstrapMinCss"/>
+    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Animation library for notifications   -->
-    <link href="/resources/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="/resources/assets/css/animate.min.css" rel="stylesheet"/>
 
     <!--  Paper Dashboard core CSS    -->
-    <link href="/resources/assets/css/paper-dashboard.css" rel="stylesheet" />
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="/resources/assets/css/demo.css" rel="stylesheet" />
+    <link href="/resources/assets/css/paper-dashboard.css" rel="stylesheet"/>
 
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <spring:url value="/resources/css/demo.css" var="demoCss" />
-    <link href="${demoCss}" rel="stylesheet" />
+    <spring:url value="/resources/css/demo.css" var="demoCss"/>
+    <link href="${demoCss}" rel="stylesheet"/>
     <link href="/resources/assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
@@ -49,36 +46,78 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/" class="simple-text">
-                    <img src="${pageContext.request.contextPath}/resources/assets/img/logo.png"  width="260"/>
+                    <img src="${pageContext.request.contextPath}/resources/assets/img/logo.png" width="230"/>
                 </a>
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <c:choose>
+                    <c:when test="${param.titre=='Accueil'}">
+                        <li class="active">
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                    </c:otherwise>
+                </c:choose>
                     <a href="/">
                         <i class="ti-home"></i>
                         <p>Accueil</p>
                     </a>
                 </li>
-                <li>
+
+                <c:choose>
+                    <c:when test="${param.titre=='Missions'}">
+                        <li class="active">
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                    </c:otherwise>
+                </c:choose>
                     <a href="/missions">
                         <i class="ti-cup"></i>
                         <p>Missions</p>
                     </a>
                 </li>
-                <li>
+
+
+                <c:choose>
+                    <c:when test="${param.titre=='Apprenants'}">
+                        <li class="active">
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                    </c:otherwise>
+                </c:choose>
                     <a href="/apprenants">
                         <i class="ti-book"></i>
                         <p>Apprenants</p>
                     </a>
                 </li>
-                <li>
+
+
+
+                <c:choose>
+                    <c:when test="${param.titre=='Jeux'}">
+                        <li class="active">
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                    </c:otherwise>
+                </c:choose>
                     <a href="/jeux">
                         <i class="ti-basketball"></i>
                         <p>Jeux</p>
                     </a>
                 </li>
-                <li>
+
+                <c:choose>
+                    <c:when test="${param.titre=='Actions'}">
+                        <li class="active">
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                    </c:otherwise>
+                </c:choose>
                     <a href="/actions">
                         <i class="ti-briefcase"></i>
                         <p>Actions</p>
@@ -98,7 +137,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand">${param.titre}</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * on 6/17/2017.
  */
 @Controller
-public class homeController {
+public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new ModelAndView("home");

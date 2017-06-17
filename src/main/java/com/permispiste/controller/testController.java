@@ -31,11 +31,4 @@ public class testController {
         }
         return new ModelAndView(destinationPage);
     }
-    // /
-    // / Affichage de la page d'accueil
-    // /
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
-//    public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        return new ModelAndView("home");
-//    }
 }

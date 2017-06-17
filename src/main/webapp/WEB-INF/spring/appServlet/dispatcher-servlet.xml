@@ -8,8 +8,11 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
     <!-- InternalPathMethodNameResolver  invokes a method with name same as the last part of request URL excluding the extension -->
  
 
-    <bean name="/home/*.htm" class="com.permispiste.controller.homeController"></bean>
-    <bean name="/test/*.htm" class="com.permispiste.controller.testController"></bean>
+    <bean name="/home/*.htm" class="com.permispiste.controller.HomeController"></bean>
+    <bean name="/actions/*.htm" class="com.permispiste.controller.ActionController"></bean>
+    <bean name="/games/*.htm" class="com.permispiste.controller.GameController"></bean>
+    <bean name="/missions/*.htm" class="com.permispiste.controller.MissionController"></bean>
+    <bean name="/trainees/*.htm" class="com.permispiste.controller.TraineeController"></bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >        
          <property name="prefix" value="/WEB-INF/views/"/>

@@ -48,58 +48,40 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                <a href="/" class="simple-text">
+                    <img src="${pageContext.request.contextPath}/resources/assets/img/logo.png"  width="260"/>
                 </a>
             </div>
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
-                        <i class="ti-panel"></i>
-                        <p>Dashboard</p>
+                    <a href="/">
+                        <i class="ti-home"></i>
+                        <p>Accueil</p>
                     </a>
                 </li>
                 <li>
-                    <a href="listerAdherent.htm">
-                        <i class="ti-user"></i>
-                        <p>DB TESTTING  User Profile</p>
+                    <a href="/missions">
+                        <i class="ti-cup"></i>
+                        <p>Missions</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
-                        <i class="ti-view-list-alt"></i>
-                        <p>Table List</p>
+                    <a href="/apprenants">
+                        <i class="ti-book"></i>
+                        <p>Apprenants</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="ti-text"></i>
-                        <p>Typography</p>
+                    <a href="/jeux">
+                        <i class="ti-basketball"></i>
+                        <p>Jeux</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
-                        <i class="ti-pencil-alt2"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="ti-map"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="ti-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                <li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="ti-export"></i>
-                        <p>Upgrade to PRO</p>
+                    <a href="/actions">
+                        <i class="ti-briefcase"></i>
+                        <p>Actions</p>
                     </a>
                 </li>
             </ul>

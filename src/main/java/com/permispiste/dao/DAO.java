@@ -35,7 +35,6 @@ public abstract class DAO {
             String request = "SELECT count(*) FROM " + entity;
             Query query = session.createQuery(request);
             result = (long) query.uniqueResult();
-            session.close();
         } catch (HibernateException ex) {
             throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + ex.getMessage());
         }

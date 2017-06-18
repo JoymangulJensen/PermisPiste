@@ -24,3 +24,4 @@ nbdist/
 .nb-gradle/
 /lib/
 /.mvn/wrapper/maven-wrapper.jar
+/src/main/resources/hibernate.cfg.xml

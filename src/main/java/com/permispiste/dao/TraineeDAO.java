@@ -13,4 +13,8 @@ public class TraineeDAO extends DAO {
         return getList(request);
     }
 
+    public long count(){
+        return super.count("ApprenantEntity");
+    }
+
 }

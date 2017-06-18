@@ -6,49 +6,40 @@
 </jsp:include>
 
 <div class="content">
-    MISSIONS
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">
-                            Liste des missions
-                            <div class="pull pull-right"><a href="/mission/ajouter">Ajouter</a></div>
+                            Liste des jeux de ${trainee.nomapprenant} ${trainee.prenomapprenant}
                         </h4>
-                        <p class="category">Missions disponible pour les apprenants</p>
+                        <p class="category">Apprenants de permis</p>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-striped">
                             <thead>
                             <th>ID</th>
-                            <th>Libellé</th>
-                            <th>Jeu associé</th>
+                            <th>Libelle</th>
                             <th><i class="fa fa-cog" aria-hidden="true"></i></th>
                             </thead>
                             <tbody>
-                            <c:forEach items="${missions}" var="item">
+                            <c:forEach items="${games}" var="item">
                                 <tr>
-                                    <td>${item.nummission}</td>
-                                    <td>${item.libmission}</td>
-                                    <td>${item.jeuByNumjeu.libellejeu}</td>
+                                    <td>${item.numjeu}</td>
+                                    <td>${item.libellejeu}</td>
                                     <th>
-                                        <a href="/mission/editer/${item.nummission}">
-                                            <i class="fa fa-edit" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="/mission/supprimer/${item.nummission}" >
-                                            <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                        <a href="/apprenant/missions/${trainee.numapprenant}/${item.numjeu}">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                     </th>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>

@@ -2,44 +2,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <jsp:include page="../header.jsp">
-    <jsp:param name="titre" value="Missions"/>
+    <jsp:param name="titre" value="Apprenants"/>
 </jsp:include>
 
 <div class="content">
-    MISSIONS
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">
-                            Liste des missions
-                            <div class="pull pull-right"><a href="/mission/ajouter">Ajouter</a></div>
+                            Liste des apprenants
+                            <div class="pull pull-right"><a href="/apprenant/ajouter">Ajouter</a></div>
                         </h4>
-                        <p class="category">Missions disponible pour les apprenants</p>
+                        <p class="category">Apprenants de permis</p>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-striped">
                             <thead>
-                            <th>ID</th>
-                            <th>Libellé</th>
-                            <th>Jeu associé</th>
-                            <th><i class="fa fa-cog" aria-hidden="true"></i></th>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
                             </thead>
                             <tbody>
-                            <c:forEach items="${missions}" var="item">
+                            <c:forEach items="${trainees}" var="item">
                                 <tr>
-                                    <td>${item.nummission}</td>
-                                    <td>${item.libmission}</td>
-                                    <td>${item.jeuByNumjeu.libellejeu}</td>
-                                    <th>
-                                        <a href="/mission/editer/${item.nummission}">
+                                    <td>${item.numapprenant}</td>
+                                    <td>${item.nomapprenant}</td>
+                                    <td>${item.prenomapprenant}</td>
+                                    <td class="text-center">
+                                        <a href="/apprenant/games/${item.numapprenant}">
+                                            <button>missions</button>
+                                        </a>
+                                        <a href="/apprenant/editer/${item.numapprenant}">
                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                         </a>
-                                        <a href="/mission/supprimer/${item.nummission}" >
+                                        <a href="/apprenant/supprimer/${item.numapprenant}">
                                             <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
                                         </a>
-                                    </th>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -48,7 +50,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>

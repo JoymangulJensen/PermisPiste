@@ -1,5 +1,7 @@
 package com.permispiste.controller;
 
+import com.permispiste.dao.GameDAO;
+import com.permispiste.dao.MissionDAO;
 import com.permispiste.dao.TraineeDAO;
 import com.permispiste.model.ApprenantEntity;
 import org.springframework.stereotype.Controller;
@@ -30,7 +32,7 @@ public class TraineeController {
     public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
         List trainees = traineeDAO.findAll();
         request.setAttribute("trainees", trainees);
-        return new ModelAndView("trainees/view");
+        return new ModelAndView("trainees/list");
     }
 
     @RequestMapping(value = "/apprenant/ajouter", method = RequestMethod.GET)
@@ -40,7 +42,7 @@ public class TraineeController {
             trainee.setNomapprenant(request.getParameter("name"));
             trainee.setPrenomapprenant(request.getParameter("firstname"));
             traineeDAO.insert(trainee);
-            return new ModelAndView("trainees/view");
+            return new ModelAndView("trainees/list");
         }
         return new ModelAndView("trainees/add");
     }
@@ -49,14 +51,34 @@ public class TraineeController {
     public ModelAndView remove(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
         ApprenantEntity trainee = traineeDAO.find(id);
         System.out.println(traineeDAO.deleteById(ApprenantEntity.class, Integer.parseInt(request.getParameter("id"))));
-        return new ModelAndView("trainees/view");
+        return new ModelAndView("trainees/list");
     }
 
     @RequestMapping(value = "/apprenant/editer/{id}", method = RequestMethod.GET)
     public ModelAndView get(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
         ApprenantEntity trainee = traineeDAO.find(id);
-        System.out.println(trainee.getNomapprenant());
         request.setAttribute("trainee", trainee);
         return new ModelAndView("trainees/edit");
+    }
+
+    @RequestMapping(value = "/apprenant/games/{id}", method = RequestMethod.GET)
+    public ModelAndView game(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
+        ApprenantEntity trainee = traineeDAO.find(id);
+        request.setAttribute("trainee", trainee);
+        GameDAO gameDAO = new GameDAO();
+        List games = gameDAO.findAll();
+        request.setAttribute("games", games);
+        return new ModelAndView("trainees/games");
+    }
+
+    @RequestMapping(value = "/apprenant/missions/{idtrainee}/{idgame}", method = RequestMethod.GET)
+    public ModelAndView mission(HttpServletRequest request, HttpServletResponse response, @PathVariable("idtrainee") Integer idtrainee, @PathVariable("idgame") Integer idgame) throws Exception {
+        ApprenantEntity trainee = traineeDAO.find(idtrainee);
+        request.setAttribute("trainee", trainee);
+        MissionDAO missionDAO = new MissionDAO();
+        List missions = missionDAO.findAll();
+        request.setAttribute("missions", missions);
+
+        return new ModelAndView("trainees/missions");
     }
 }

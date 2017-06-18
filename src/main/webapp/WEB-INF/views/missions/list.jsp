@@ -14,7 +14,7 @@
                     <div class="header">
                         <h4 class="title">
                             Liste des missions
-                            <div class="pull pull-right"><a href="/missions/ajouter">Ajouter</a></div>
+                            <div class="pull pull-right"><a href="/mission/ajouter">Ajouter</a></div>
                         </h4>
                         <p class="category">Missions disponible pour les apprenants</p>
                     </div>
@@ -33,10 +33,10 @@
                                     <td>${item.libmission}</td>
                                     <td>${item.jeuByNumjeu.libellejeu}</td>
                                     <th>
-                                        <a href="/missions/editer/${item.nummission}">
+                                        <a href="/mission/editer/${item.nummission}">
                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                         </a>
-                                        <a href="/missions/supprimer/${item.nummission}">
+                                        <a href="/mission/supprimer/${item.nummission}">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
                                     </th>

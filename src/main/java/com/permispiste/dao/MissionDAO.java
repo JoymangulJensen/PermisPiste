@@ -1,5 +1,7 @@
 package com.permispiste.dao;
 
+import com.permispiste.model.MissionEntity;
+
 import java.util.List;
 
 /**
@@ -7,13 +9,16 @@ import java.util.List;
  * on 6/18/2017.
  */
 public class MissionDAO  extends DAO {
+    public long count(){
+        return super.count("MissionEntity");
+    }
 
     public List findAll() {
-        String request = "SELECT m FROM MissionEntity m ORDER BY m.nummission";
+        String request = "SELECT a FROM MissionEntity a ORDER BY a.nummission";
         return getList(request);
     }
 
-    public long count(){
-        return super.count("MissionEntity");
+    public MissionEntity find(int id) {
+        return (MissionEntity) find(MissionEntity.class, id);
     }
 }

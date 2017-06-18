@@ -13,7 +13,7 @@
                     <div class="header">
                         <h4 class="title">Ajouter un apprenant</h4>
                         <br/>
-                        <form class="form-horizontal" method="post" action="/apprenant/editer/${trainee.numapprenant}">
+                        <form class="form-horizontal" method="post" action="/apprenant/ajouter">
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="nomapprenant">Nom :</label>
                                 <div class="col-sm-10">

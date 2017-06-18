@@ -1,5 +1,8 @@
 package com.permispiste.dao;
 
+import com.permispiste.model.ApprenantEntity;
+import com.permispiste.model.IEntity;
+
 import java.util.List;
 
 /**
@@ -15,6 +18,10 @@ public class TraineeDAO extends DAO {
 
     public long count(){
         return super.count("ApprenantEntity");
+    }
+
+    public ApprenantEntity find(int id) {
+        return (ApprenantEntity) find(ApprenantEntity.class, id);
     }
 
 }

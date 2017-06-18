@@ -17,11 +17,42 @@ import java.util.List;
  */
 @Controller
 public class TraineeController {
+
+    private TraineeDAO traineeDAO;
+
+    public TraineeController() {
+        super();
+        traineeDAO = new TraineeDAO();
+    }
+
     @RequestMapping(value = "/apprenants", method = RequestMethod.GET)
-    public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        TraineeDAO traineeDAO = new TraineeDAO();
+    public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
         List trainees = traineeDAO.findAll();
         request.setAttribute("trainees", trainees);
-        return new ModelAndView("trainees/view");
+        return new ModelAndView("trainees/list");
+    }
+
+    @RequestMapping(value = "/apprenant/ajouter", method = RequestMethod.GET)
+    public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ApprenantEntity trainee = new ApprenantEntity();
+        trainee.setNomapprenant(request.getParameter("name"));
+        trainee.setPrenomapprenant(request.getParameter("firstname"));
+        traineeDAO.insert(trainee);
+        return new ModelAndView("trainees/list");
+    }
+
+    @RequestMapping(value = "/apprenant/supprimer", method = RequestMethod.GET)
+    public ModelAndView remove(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//        ApprenantEntity trainee = traineeDAO.find(15);
+        System.out.println(traineeDAO.deleteById(ApprenantEntity.class, Integer.parseInt(request.getParameter("id"))));
+        return new ModelAndView("trainees/list");
+    }
+
+    @RequestMapping(value = "/apprenant/id", method = RequestMethod.GET)
+    public ModelAndView get(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ApprenantEntity trainee = traineeDAO.find(Integer.parseInt(request.getParameter("id")));
+        System.out.println(trainee.getNomapprenant());
+        request.setAttribute("trainee", trainee);
+        return new ModelAndView("trainees/detail");
     }
 }

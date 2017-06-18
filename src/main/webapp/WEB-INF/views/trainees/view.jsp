@@ -36,7 +36,7 @@
                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                         </a>
                                         <a href="/apprenant/supprimer/${item.numapprenant}">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                            <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
                                         </a>
                                     </th>
                                 </tr>

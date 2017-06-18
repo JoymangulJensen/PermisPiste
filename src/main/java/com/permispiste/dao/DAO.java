@@ -123,7 +123,7 @@ public abstract class DAO {
         return result;
     }
 
-    public void update(ApprenantEntity trainee) {
-        insert(trainee);
+    public void update(IEntity entity) {
+        insert(entity);
     };
 }

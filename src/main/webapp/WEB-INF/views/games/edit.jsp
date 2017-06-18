@@ -17,7 +17,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="libellejeu">Libelle :</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="libellejeu" name="libellejeu" placeholder="Entrez le libelle du jeu"/>
+                                    <input type="text" class="form-control" id="libellejeu" name="libellejeu" placeholder="Entrez le libelle du jeu" value="${game.libellejeu}"/>
                                 </div>
                             </div>
                             <div class="form-group">

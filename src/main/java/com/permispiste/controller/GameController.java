@@ -27,36 +27,38 @@ public class GameController {
     }
 
 
-    @RequestMapping(value = "/game/list", method = RequestMethod.GET)
-    public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/game/list")
+    public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
         List games = gameDAO.findAll();
         request.setAttribute("games", games);
         return new ModelAndView("games/list");
     }
 
-    @RequestMapping(value = "/game/ajouter", method = RequestMethod.GET)
+    @RequestMapping(value = "/game/ajouter")
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         JeuEntity game = new JeuEntity();
-        if(false){
-            game.setLibellejeu(request.getParameter("libelle"));
-            gameDAO.insert((IEntity) game);
-            return new ModelAndView("games/view");
+        if((request.getParameter("libellejeu")) != null){
+            game.setLibellejeu(request.getParameter("libellejeu"));
+            gameDAO.insert(game);
+            return list(request, response);
         }
         return new ModelAndView("games/add");
     }
 
-    @RequestMapping(value = "/game/supprimer/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/game/supprimer/{id}")
     public ModelAndView remove(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
-        JeuEntity game = gameDAO.find(id);
-        System.out.println(gameDAO.deleteById(JeuEntity.class, Integer.parseInt(request.getParameter("id"))));
-        return new ModelAndView("games/view");
+        gameDAO.deleteById(JeuEntity.class, id);
+        return list(request, response);
     }
 
-    @RequestMapping(value = "/game/editer/{id}", method = RequestMethod.GET)
-    public ModelAndView get(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
+    @RequestMapping(value = "/game/editer/{id}")
+    public ModelAndView edit(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
         JeuEntity game = gameDAO.find(id);
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println(game.getLibellejeu());
+        if(request.getParameter("libellejeu") != null) {
+            game.setLibellejeu(request.getParameter("libellejeu"));
+            gameDAO.update(game);
+            return list(request, response);
+        }
         request.setAttribute("game", game);
         return new ModelAndView("games/edit");
     }

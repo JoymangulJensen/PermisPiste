@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "jeu", schema = "permispiste", catalog = "")
-public class JeuEntity {
+public class JeuEntity implements IEntity{
     private int numjeu;
     private String libellejeu;
 

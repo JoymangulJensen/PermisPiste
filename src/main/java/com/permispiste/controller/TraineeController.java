@@ -50,14 +50,12 @@ public class TraineeController {
 
     @RequestMapping(value = "/apprenant/supprimer/{id}")
     public ModelAndView remove(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
-//        ApprenantEntity trainee = traineeDAO.find(id);
-        System.out.println(id);
-        System.out.println(traineeDAO.deleteById(ApprenantEntity.class, id));
+        traineeDAO.deleteById(ApprenantEntity.class, id);
         return list(request, response);
     }
 
     @RequestMapping(value = "/apprenant/editer/{id}")
-    public ModelAndView get(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
+    public ModelAndView edit(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
         ApprenantEntity trainee = traineeDAO.find(id);
         if(request.getParameter("name") != null) {
             trainee.setNomapprenant(request.getParameter("name"));

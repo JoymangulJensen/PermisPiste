@@ -2,13 +2,11 @@ package com.permispiste.controller;
 
 import com.permispiste.dao.GameDAO;
 import com.permispiste.dao.MissionDAO;
-import com.permispiste.dao.MissionDAO;
-import com.permispiste.model.IEntity;
+import com.permispiste.model.JeuEntity;
 import com.permispiste.model.MissionEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,39 +27,57 @@ public class MissionController {
         missionDAO = new MissionDAO();
     }
 
-    @RequestMapping(value = "/missions", method = RequestMethod.GET)
-    public ModelAndView Afficheindex(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/missions")
+    public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
         List missions = missionDAO.findAll();
         request.setAttribute("missions", missions);
         return new ModelAndView("missions/list");
     }
 
-    @RequestMapping(value = "/mission/ajouter", method = RequestMethod.GET)
+    @RequestMapping(value = "/mission/ajouter")
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         MissionEntity mission = new MissionEntity();
-        GameDAO gameDAO = new GameDAO();
-        List games = gameDAO.findAll();
-        request.setAttribute("games", games);
-        if(false){
-            mission.setLibmission(request.getParameter("libmission"));
-            missionDAO.insert((IEntity) mission);
-            return new ModelAndView("mission/list");
+        if (updateOrInsertValid(mission, request)) {
+            missionDAO.insert(mission);
+            return list(request, response);
         }
+
+        List games = new GameDAO().findAll();
+        request.setAttribute("games", games);
         return new ModelAndView("missions/add");
     }
 
-    @RequestMapping(value = "/mission/supprimer/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/mission/supprimer/{id}")
     public ModelAndView remove(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
-        MissionEntity trainee = missionDAO.find(id);
-        System.out.println(missionDAO.deleteById(MissionEntity.class, Integer.parseInt(request.getParameter("id"))));
-        return new ModelAndView("missions/view");
+        missionDAO.deleteById(MissionEntity.class, id);
+        return list(request, response);
     }
 
-    @RequestMapping(value = "/mission/editer/{id}", method = RequestMethod.GET)
-    public ModelAndView get(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
-        MissionEntity trainee = missionDAO.find(id);
-        System.out.println(trainee.getLibmission());
-        request.setAttribute("trainee", trainee);
+    @RequestMapping(value = "/mission/editer/{id}")
+    public ModelAndView edit(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
+
+        MissionEntity mission = missionDAO.find(id);
+        request.setAttribute("mission", mission);
+
+        if (updateOrInsertValid(mission, request)){
+            missionDAO.update(mission);
+            return list(request, response);
+        }
+
+        List games = new GameDAO().findAll();
+        request.setAttribute("games", games);
         return new ModelAndView("missions/edit");
+    }
+
+    private boolean updateOrInsertValid(MissionEntity mission, final HttpServletRequest request) {
+        String label = request.getParameter("label");
+        if (label != null){
+            mission.setLibmission(label);
+            int game_id = Integer.parseInt(request.getParameter("game_id"));
+            JeuEntity game = new GameDAO().find(game_id);
+            mission.setJeuByNumjeu(game);
+            return true;
+        }
+        return false;
     }
 }

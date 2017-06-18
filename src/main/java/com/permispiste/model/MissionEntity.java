@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by seljo on 5/4/2017.
  */
 @Entity
-@Table(name = "mission", schema = "permispiste", catalog = "")
-public class MissionEntity {
+@Table(name = "mission", schema = "permispiste")
+public class MissionEntity implements IEntity {
     private int nummission;
     private String libmission;
     private JeuEntity jeuByNumjeu;

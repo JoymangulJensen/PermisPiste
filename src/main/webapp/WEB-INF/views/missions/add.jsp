@@ -16,15 +16,15 @@
                         <br/>
                         <form class="form-horizontal" method="post" action="/mission/ajouter">
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="nomapprenant">Libellé :</label>
+                                <label class="control-label col-sm-2" for="label">Libellé :</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nomapprenant" name="nomapprenant" placeholder="Entrez le libellé de la mission">
+                                    <input type="text" class="form-control" id="label" name="label" placeholder="Entrez le libellé de la mission">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="prenomapprenant">Jeu : </label>
+                                <label class="control-label col-sm-2" for="game_id">Jeu : </label>
                                 <div class="col-sm-10">
-                                    <select id="prenomapprenant" name="prenomapprenant" class="form-control">
+                                    <select id="game_id" name="game_id" class="form-control">
                                         <option value="NONE">Choisir jeu</option>
                                         <c:forEach items="${games}" var="item">
                                             <option value="${item.numjeu}">${item.libellejeu}</option>

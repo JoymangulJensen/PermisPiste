@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by seljo on 5/4/2017.
  */
 @Entity
-@Table(name = "jeu", schema = "permispiste", catalog = "")
+@Table(name = "jeu", schema = "permispiste")
 public class JeuEntity implements IEntity{
     private int numjeu;
     private String libellejeu;

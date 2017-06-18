@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="header">
                         <h4 class="title">
-                            Liste des missions de ${trainee.nomapprenant} ${trainee.prenomapprenant}
+                            Liste des missions du jeux "${game.libellejeu}" de ${trainee.nomapprenant} ${trainee.prenomapprenant}
                         </h4>
                         <p class="category">Apprenants de permis</p>
                     </div>
@@ -23,7 +23,7 @@
                             <th>Libelle</th>
                             <th>Voir résultat meilleur action associé</th>
                             <th>Voir objectif demandé</th>
-                            <th><i class="fa fa-cog" aria-hidden="true"></i></th>
+                            <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
                             </thead>
                             <tbody>
                             <c:forEach items="${missions}" var="item">
@@ -32,9 +32,9 @@
                                     <td>${item.libmission}</td>
                                     <td>1</td>
                                     <td>2</td>
-                                    <th>
+                                    <th class="text-center">
                                         <a href="">
-                                            <button>Réaliser une action</button>
+                                            <button type="button" class="btn btn-success">Réaliser une action</button>
                                         </a>
                                     </th>
                                 </tr>

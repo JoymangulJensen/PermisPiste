@@ -4,6 +4,7 @@ import com.permispiste.dao.GameDAO;
 import com.permispiste.dao.MissionDAO;
 import com.permispiste.dao.TraineeDAO;
 import com.permispiste.model.ApprenantEntity;
+import com.permispiste.model.JeuEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,10 +76,14 @@ public class TraineeController {
     public ModelAndView mission(HttpServletRequest request, HttpServletResponse response, @PathVariable("idtrainee") Integer idtrainee, @PathVariable("idgame") Integer idgame) throws Exception {
         ApprenantEntity trainee = traineeDAO.find(idtrainee);
         request.setAttribute("trainee", trainee);
-        MissionDAO missionDAO = new MissionDAO();
-        List missions = missionDAO.findAll();
-        request.setAttribute("missions", missions);
 
+        GameDAO gameDAO = new GameDAO();
+        JeuEntity game = gameDAO.find(idgame);
+        request.setAttribute("game", game);
+
+        MissionDAO missionDAO = new MissionDAO();
+        List missions = missionDAO.findByGame(game);
+        request.setAttribute("missions", missions);
         return new ModelAndView("trainees/missions");
     }
 }

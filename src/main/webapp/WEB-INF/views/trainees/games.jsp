@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <jsp:include page="../header.jsp">
-    <jsp:param name="titre" value="Missions"/>
+    <jsp:param name="titre" value="Jeux"/>
 </jsp:include>
 
 <div class="content">
@@ -21,16 +21,16 @@
                             <thead>
                             <th>ID</th>
                             <th>Libelle</th>
-                            <th><i class="fa fa-cog" aria-hidden="true"></i></th>
+                            <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
                             </thead>
                             <tbody>
                             <c:forEach items="${games}" var="item">
                                 <tr>
                                     <td>${item.numjeu}</td>
                                     <td>${item.libellejeu}</td>
-                                    <th>
+                                    <th class="text-center">
                                         <a href="/apprenant/missions/${trainee.numapprenant}/${item.numjeu}">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            <button type="button" class="btn btn-primary">Missions</button>
                                         </a>
                                     </th>
                                 </tr>

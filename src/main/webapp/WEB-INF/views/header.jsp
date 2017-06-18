@@ -104,7 +104,7 @@
                         <li>
                     </c:otherwise>
                 </c:choose>
-                    <a href="/jeux">
+                    <a href="/game/list">
                         <i class="ti-basketball"></i>
                         <p>Jeux</p>
                     </a>

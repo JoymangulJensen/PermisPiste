@@ -30,17 +30,17 @@ public class TraineeController {
     public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
         List trainees = traineeDAO.findAll();
         request.setAttribute("trainees", trainees);
-        return new ModelAndView("trainees/list");
+        return new ModelAndView("trainees/view");
     }
 
     @RequestMapping(value = "/apprenant/ajouter", method = RequestMethod.GET)
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ApprenantEntity trainee = new ApprenantEntity();
-        if(request.getParameter("name") != ""){
+        if(false){
             trainee.setNomapprenant(request.getParameter("name"));
             trainee.setPrenomapprenant(request.getParameter("firstname"));
             traineeDAO.insert(trainee);
-            return new ModelAndView("trainees/add");
+            return new ModelAndView("trainees/view");
         }
         return new ModelAndView("trainees/add");
     }
@@ -49,7 +49,7 @@ public class TraineeController {
     public ModelAndView remove(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
         ApprenantEntity trainee = traineeDAO.find(id);
         System.out.println(traineeDAO.deleteById(ApprenantEntity.class, Integer.parseInt(request.getParameter("id"))));
-        return new ModelAndView("trainees/list");
+        return new ModelAndView("trainees/view");
     }
 
     @RequestMapping(value = "/apprenant/editer/{id}", method = RequestMethod.GET)
@@ -57,6 +57,6 @@ public class TraineeController {
         ApprenantEntity trainee = traineeDAO.find(id);
         System.out.println(trainee.getNomapprenant());
         request.setAttribute("trainee", trainee);
-        return new ModelAndView("trainees/detail");
+        return new ModelAndView("trainees/edit");
     }
 }

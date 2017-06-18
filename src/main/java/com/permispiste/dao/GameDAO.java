@@ -1,7 +1,6 @@
 package com.permispiste.dao;
 
 import com.permispiste.model.JeuEntity;
-
 import java.util.List;
 
 /**

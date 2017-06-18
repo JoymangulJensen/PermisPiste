@@ -1,7 +1,6 @@
 package com.permispiste.dao;
 
 import com.permispiste.errorhandlers.ServiceHibernateException;
-import com.permispiste.model.ApprenantEntity;
 import com.permispiste.model.IEntity;
 import com.permispiste.service.ServiceHibernate;
 import org.hibernate.Hibernate;
@@ -10,7 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.util.List;
 
@@ -27,12 +25,11 @@ public abstract class DAO {
             session = ServiceHibernate.currentSession();
             Query query = session.createQuery(request);
             result = query.getResultList();
-            session.close();
         } catch (HibernateException ex) {
             throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
-                session.close();
+                //session.close();
             }
         }
         return result;
@@ -51,7 +48,6 @@ public abstract class DAO {
             tx = session.beginTransaction();
             session.save(entity);
             tx.commit();
-            session.close();
         } catch (HibernateException ex) {
             if (tx != null) {
                 tx.rollback();
@@ -60,7 +56,7 @@ public abstract class DAO {
             throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
-                session.close();
+                //session.close();
             }
         }
 
@@ -83,7 +79,7 @@ public abstract class DAO {
             throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
-                session.close();
+                //session.close();
             }
         }
         return entity;

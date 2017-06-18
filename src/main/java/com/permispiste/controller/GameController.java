@@ -1,7 +1,6 @@
 package com.permispiste.controller;
 
 import com.permispiste.dao.GameDAO;
-import com.permispiste.dao.TraineeDAO;
 import com.permispiste.model.IEntity;
 import com.permispiste.model.JeuEntity;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,6 @@ import java.util.List;
  */
 @Controller
 public class GameController {
-
     private GameDAO gameDAO;
 
     public GameController() {
@@ -28,11 +26,12 @@ public class GameController {
         gameDAO = new GameDAO();
     }
 
+
     @RequestMapping(value = "/game/list", method = RequestMethod.GET)
     public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
         List games = gameDAO.findAll();
         request.setAttribute("games", games);
-        return new ModelAndView("games/view");
+        return new ModelAndView("games/list");
     }
 
     @RequestMapping(value = "/game/ajouter", method = RequestMethod.GET)

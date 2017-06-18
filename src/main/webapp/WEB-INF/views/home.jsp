@@ -71,7 +71,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Jeux</p>
-                                            ${countGamen}
+                                            ${countGame}
                                         </div>
                                     </div>
                                 </div>

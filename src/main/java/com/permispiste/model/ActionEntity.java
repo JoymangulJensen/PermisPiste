@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by seljo on 5/4/2017.
  */
 @Entity
-@Table(name = "action", schema = "permispiste", catalog = "")
-public class ActionEntity {
+@Table(name = "action", schema = "permispiste")
+public class ActionEntity implements  IEntity {
     private int numaction;
     private String libaction;
     private Integer scoremin;

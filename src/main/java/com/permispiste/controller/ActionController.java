@@ -1,6 +1,7 @@
 package com.permispiste.controller;
 
 import com.permispiste.dao.ActionDAO;
+import com.permispiste.model.ActionEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,9 +25,23 @@ public class ActionController {
     }
 
     @RequestMapping(value = "/actions", method = RequestMethod.GET)
-    public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List actions = actionDAO.findAll();
-        request.setAttribute("actions", actions);
+    public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setAttribute("actions", actionDAO.findAll());
         return new ModelAndView("actions/list");
+    }
+
+    @RequestMapping(value = "/action/ajouter")
+    public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ActionEntity action = new ActionEntity();
+
+        // Todo : Finish the action DAO
+
+//        if (updateOrInsertValid(action, request)) {
+//            actionDAO.insert(action);
+//            return list(request, response);
+//        }
+
+
+        return new ModelAndView("actions/add");
     }
 }

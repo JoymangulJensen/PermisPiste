@@ -3,6 +3,7 @@ package com.permispiste.controller;
 import com.permispiste.dao.TraineeDAO;
 import com.permispiste.model.ApprenantEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,22 +36,25 @@ public class TraineeController {
     @RequestMapping(value = "/apprenant/ajouter", method = RequestMethod.GET)
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ApprenantEntity trainee = new ApprenantEntity();
-        trainee.setNomapprenant(request.getParameter("name"));
-        trainee.setPrenomapprenant(request.getParameter("firstname"));
-        traineeDAO.insert(trainee);
-        return new ModelAndView("trainees/list");
+        if(request.getParameter("name") != ""){
+            trainee.setNomapprenant(request.getParameter("name"));
+            trainee.setPrenomapprenant(request.getParameter("firstname"));
+            traineeDAO.insert(trainee);
+            return new ModelAndView("trainees/add");
+        }
+        return new ModelAndView("trainees/add");
     }
 
-    @RequestMapping(value = "/apprenant/supprimer", method = RequestMethod.GET)
-    public ModelAndView remove(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        ApprenantEntity trainee = traineeDAO.find(15);
+    @RequestMapping(value = "/apprenant/supprimer/{id}", method = RequestMethod.GET)
+    public ModelAndView remove(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
+        ApprenantEntity trainee = traineeDAO.find(id);
         System.out.println(traineeDAO.deleteById(ApprenantEntity.class, Integer.parseInt(request.getParameter("id"))));
         return new ModelAndView("trainees/list");
     }
 
-    @RequestMapping(value = "/apprenant/id", method = RequestMethod.GET)
-    public ModelAndView get(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ApprenantEntity trainee = traineeDAO.find(Integer.parseInt(request.getParameter("id")));
+    @RequestMapping(value = "/apprenant/editer/{id}", method = RequestMethod.GET)
+    public ModelAndView get(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
+        ApprenantEntity trainee = traineeDAO.find(id);
         System.out.println(trainee.getNomapprenant());
         request.setAttribute("trainee", trainee);
         return new ModelAndView("trainees/detail");

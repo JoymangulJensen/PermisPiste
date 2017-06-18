@@ -11,7 +11,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Liste des apprenants</h4>
+                        <h4 class="title">
+                            Liste des apprenants
+                            <div class="pull pull-right"><a href="/apprenant/ajouter">Ajouter</a></div>
+                        </h4>
                         <p class="category">Apprenants de permis</p>
                     </div>
                     <div class="content table-responsive table-full-width">
@@ -20,6 +23,7 @@
                                 <th>ID</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
+                                <th><i class="fa fa-cog" aria-hidden="true"></i></th>
                             </thead>
                             <tbody>
                             <c:forEach items="${trainees}" var="item">
@@ -27,6 +31,14 @@
                                     <td>${item.numapprenant}</td>
                                     <td>${item.nomapprenant}</td>
                                     <td>${item.prenomapprenant}</td>
+                                    <th>
+                                        <a href="/apprenant/editer/${item.numapprenant}">
+                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="/apprenant/supprimer/${item.numapprenant}">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </th>
                                 </tr>
                             </c:forEach>
                             </tbody>

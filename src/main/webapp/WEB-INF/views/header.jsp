@@ -31,7 +31,7 @@
     <spring:url value="/resources/css/demo.css" var="demoCss"/>
     <link href="${demoCss}" rel="stylesheet"/>
     <link href="/resources/assets/css/themify-icons.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 

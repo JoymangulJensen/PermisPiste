@@ -7,6 +7,8 @@
     <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    wsfhger <br>
+                    ${countAction}
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="content">

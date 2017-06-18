@@ -27,4 +27,19 @@ public abstract class DAO {
         return result;
     }
 
+    protected long count(String entity)
+    {
+        long result = 0;
+        try {
+            Session session = ServiceHibernate.currentSession();
+            String request = "SELECT count(*) FROM " + entity;
+            Query query = session.createQuery(request);
+            result = (long) query.uniqueResult();
+            session.close();
+        } catch (HibernateException ex) {
+            throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + ex.getMessage());
+        }
+        return result;
+    }
+
 }

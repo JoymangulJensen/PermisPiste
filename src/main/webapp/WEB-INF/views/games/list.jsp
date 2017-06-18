@@ -13,7 +13,9 @@
                     <div class="header">
                         <h4 class="title">
                             Liste des jeux
-                            <div class="pull pull-right"><a href="/game/ajouter">Ajouter</a></div>
+                            <div class="pull pull-right">
+                                <button type="button" class="btn btn-success"><a href="/game/ajouter">Ajouter</a></button>
+                            </div>
                         </h4>
                         <p class="category">Jeux </p>
                     </div>
@@ -22,19 +24,23 @@
                             <thead>
                             <th>ID</th>
                             <th>Libelle</th>
-                            <th><i class="fa fa-cog" aria-hidden="true"></i></th>
+                            <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
                             </thead>
                             <tbody>
                             <c:forEach items="${games}" var="item">
                                 <tr>
                                     <td>${item.numjeu}</td>
                                     <td>${item.libellejeu}</td>
-                                    <th>
+                                    <th class="text-center">
                                         <a href="/game/editer/${item.numjeu}">
-                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                            <button type="button" class="btn btn-success">
+                                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                            </button>
                                         </a>
                                         <a href="/game/supprimer/${item.numjeu}">
-                                            <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                            </button>
                                         </a>
                                     </th>
                                 </tr>

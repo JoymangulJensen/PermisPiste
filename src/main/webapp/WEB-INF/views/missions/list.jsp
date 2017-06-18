@@ -14,7 +14,9 @@
                     <div class="header">
                         <h4 class="title">
                             Liste des missions
-                            <div class="pull pull-right"><a href="/mission/ajouter">Ajouter</a></div>
+                            <div class="pull pull-right">
+                                <button type="button" class="btn btn-success"><a href="/mission/ajouter">Ajouter</a></button>
+                            </div>
                         </h4>
                         <p class="category">Missions disponible pour les apprenants</p>
                     </div>
@@ -24,7 +26,7 @@
                             <th>ID</th>
                             <th>Libellé</th>
                             <th>Jeu associé</th>
-                            <th><i class="fa fa-cog" aria-hidden="true"></i></th>
+                            <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
                             </thead>
                             <tbody>
                             <c:forEach items="${missions}" var="item">
@@ -32,12 +34,16 @@
                                     <td>${item.nummission}</td>
                                     <td>${item.libmission}</td>
                                     <td>${item.jeuByNumjeu.libellejeu}</td>
-                                    <th>
+                                    <th class="text-center">
                                         <a href="/mission/editer/${item.nummission}">
-                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                            <button type="button" class="btn btn-success">
+                                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                            </button>
                                         </a>
                                         <a href="/mission/supprimer/${item.nummission}" >
-                                            <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                            </button>
                                         </a>
                                     </th>
                                 </tr>

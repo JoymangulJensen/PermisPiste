@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <jsp:include page="../header.jsp">
-    <jsp:param name="titre" value="Apprenants"/>
+    <jsp:param name="titre" value="Missions"/>
 </jsp:include>
 
 <div class="content">
@@ -11,19 +12,24 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Ajouter un apprenant</h4>
+                        <h4 class="title">Ajouter une mission</h4>
                         <br/>
-                        <form class="form-horizontal" method="post" action="/apprenant/ajouter">
+                        <form class="form-horizontal" method="post" action="/mission/ajouter">
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="nomapprenant">Nom :</label>
+                                <label class="control-label col-sm-2" for="nomapprenant">Libellé :</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nomapprenant" name="nomapprenant" placeholder="Entrer votre nom">
+                                    <input type="text" class="form-control" id="nomapprenant" name="nomapprenant" placeholder="Entrez le libellé de la mission">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="prenomapprenant">Prénom : </label>
+                                <label class="control-label col-sm-2" for="prenomapprenant">Jeu : </label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="prenomapprenant" id="prenomapprenant" placeholder="Entrer votre prénom">
+                                    <select id="prenomapprenant" name="prenomapprenant" class="form-control">
+                                        <option value="NONE">Choisir jeu</option>
+                                        <c:forEach items="${games}" var="item">
+                                            <option value="${item.numjeu}">${item.libellejeu}</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

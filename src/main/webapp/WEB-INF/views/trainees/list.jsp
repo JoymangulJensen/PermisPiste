@@ -13,7 +13,9 @@
                     <div class="header">
                         <h4 class="title">
                             Liste des apprenants
-                            <div class="pull pull-right"><a href="/apprenant/ajouter">Ajouter</a></div>
+                            <div class="pull pull-right">
+                                <button type="button" class="btn btn-success"><a href="/apprenant/ajouter">Ajouter</a></button>
+                            </div>
                         </h4>
                         <p class="category">Apprenants de permis</p>
                     </div>
@@ -33,13 +35,17 @@
                                     <td>${item.prenomapprenant}</td>
                                     <td class="text-center">
                                         <a href="/apprenant/games/${item.numapprenant}">
-                                            <button>missions</button>
+                                            <button type="button" class="btn btn-primary">missions</button>
                                         </a>
                                         <a href="/apprenant/editer/${item.numapprenant}">
+                                            <button type="button" class="btn btn-success">
                                             <i class="fa fa-edit" aria-hidden="true"></i>
+                                        </button>
                                         </a>
                                         <a href="/apprenant/supprimer/${item.numapprenant}">
-                                            <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                            </button>
                                         </a>
                                     </td>
                                 </tr>

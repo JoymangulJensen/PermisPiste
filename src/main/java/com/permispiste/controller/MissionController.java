@@ -1,5 +1,6 @@
 package com.permispiste.controller;
 
+import com.permispiste.dao.GameDAO;
 import com.permispiste.dao.MissionDAO;
 import com.permispiste.dao.MissionDAO;
 import com.permispiste.model.IEntity;
@@ -38,10 +39,13 @@ public class MissionController {
     @RequestMapping(value = "/mission/ajouter", method = RequestMethod.GET)
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         MissionEntity mission = new MissionEntity();
+        GameDAO gameDAO = new GameDAO();
+        List games = gameDAO.findAll();
+        request.setAttribute("games", games);
         if(false){
             mission.setLibmission(request.getParameter("libmission"));
             missionDAO.insert((IEntity) mission);
-            return new ModelAndView("mission/view");
+            return new ModelAndView("mission/list");
         }
         return new ModelAndView("missions/add");
     }

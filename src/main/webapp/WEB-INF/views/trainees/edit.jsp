@@ -15,15 +15,15 @@
                         <br/>
                         <form class="form-horizontal" method="post" action="/apprenant/editer/${trainee.numapprenant}">
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="nomapprenant">Nom :</label>
+                                <label class="control-label col-sm-2" for="name">Nom :</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nomapprenant" name="nomapprenant" placeholder="Entrer votre nom">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Entrer votre nom" value="${trainee.nomapprenant}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="prenomapprenant">Prénom : </label>
+                                <label class="control-label col-sm-2" for="firstname">Prénom : </label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="prenomapprenant" id="prenomapprenant" placeholder="Entrer votre prénom">
+                                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Entrer votre prénom" value="${trainee.prenomapprenant}">
                                 </div>
                             </div>
                             <div class="form-group">

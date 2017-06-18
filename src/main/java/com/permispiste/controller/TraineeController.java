@@ -36,28 +36,35 @@ public class TraineeController {
         return new ModelAndView("trainees/list");
     }
 
-    @RequestMapping(value = "/apprenant/ajouter", method = RequestMethod.GET)
+    @RequestMapping(value = "/apprenant/ajouter")
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ApprenantEntity trainee = new ApprenantEntity();
-        if(false){
+        if(request.getParameter("name") != null){
             trainee.setNomapprenant(request.getParameter("name"));
             trainee.setPrenomapprenant(request.getParameter("firstname"));
             traineeDAO.insert(trainee);
-            return new ModelAndView("trainees/list");
+            return list(request, response);
         }
         return new ModelAndView("trainees/add");
     }
 
-    @RequestMapping(value = "/apprenant/supprimer/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/apprenant/supprimer/{id}")
     public ModelAndView remove(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
-        ApprenantEntity trainee = traineeDAO.find(id);
-        System.out.println(traineeDAO.deleteById(ApprenantEntity.class, Integer.parseInt(request.getParameter("id"))));
-        return new ModelAndView("trainees/list");
+//        ApprenantEntity trainee = traineeDAO.find(id);
+        System.out.println(id);
+        System.out.println(traineeDAO.deleteById(ApprenantEntity.class, id));
+        return list(request, response);
     }
 
-    @RequestMapping(value = "/apprenant/editer/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/apprenant/editer/{id}")
     public ModelAndView get(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
         ApprenantEntity trainee = traineeDAO.find(id);
+        if(request.getParameter("name") != null) {
+            trainee.setNomapprenant(request.getParameter("name"));
+            trainee.setPrenomapprenant(request.getParameter("firstname"));
+            traineeDAO.update(trainee);
+            return list(request, response);
+        }
         request.setAttribute("trainee", trainee);
         return new ModelAndView("trainees/edit");
     }

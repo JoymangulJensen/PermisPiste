@@ -1,6 +1,7 @@
 package com.permispiste.dao;
 
 import com.permispiste.errorhandlers.ServiceHibernateException;
+import com.permispiste.model.ApprenantEntity;
 import com.permispiste.model.IEntity;
 import com.permispiste.service.ServiceHibernate;
 import org.hibernate.Hibernate;
@@ -87,9 +88,12 @@ public abstract class DAO {
 
     public boolean deleteById(Class<?> type, Serializable id) {
         Session session = ServiceHibernate.currentSession();
+        Transaction tx = session.beginTransaction();
         Object persistentInstance = session.load(type, id);
         if (persistentInstance != null) {
             session.delete(persistentInstance);
+            session.flush() ;
+            tx.commit();
             return true;
         }
         return false;
@@ -98,8 +102,10 @@ public abstract class DAO {
     public void delete(IEntity entity)
     {
         Session session = ServiceHibernate.currentSession();
+        Transaction tx = session.beginTransaction();
         session.delete(entity);
         session.flush() ;
+        tx.commit();
 
     }
 
@@ -117,4 +123,7 @@ public abstract class DAO {
         return result;
     }
 
+    public void update(ApprenantEntity trainee) {
+        insert(trainee);
+    };
 }

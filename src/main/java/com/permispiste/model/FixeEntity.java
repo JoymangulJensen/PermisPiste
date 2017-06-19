@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "fixe", schema = "permispiste", catalog = "")
 @IdClass(FixeEntityPK.class)
-public class FixeEntity {
+public class FixeEntity implements IEntity{
     private int nummission;
     private int numobjectif;
 

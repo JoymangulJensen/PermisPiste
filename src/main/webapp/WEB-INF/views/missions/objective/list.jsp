@@ -33,7 +33,7 @@
                                     <td>${item.numobjectif}</td>
                                     <td>${item.libobectif}</td>
                                     <th class="text-center">
-                                        <a href="/objectif/supprimer/${item.nummission}" >
+                                        <a href="/objectif/supprimer/${item.numobjectif}" >
                                             <button type="button" class="btn btn-danger">
                                                 <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
                                             </button>

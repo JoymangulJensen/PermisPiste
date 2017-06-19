@@ -2,6 +2,7 @@ package com.permispiste.controller;
 
 import com.permispiste.dao.GameDAO;
 import com.permispiste.dao.MissionDAO;
+import com.permispiste.dao.ObjectiveDAO;
 import com.permispiste.model.JeuEntity;
 import com.permispiste.model.MissionEntity;
 import org.springframework.stereotype.Controller;
@@ -81,14 +82,15 @@ public class MissionController {
         return false;
     }
 
-    @RequestMapping(value = "/objectifs/{id}")
-    public ModelAndView listObjectifs(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List missions = missionDAO.findAll();
-        request.setAttribute("missions", missions);
+    @RequestMapping(value = "/mission/objectifs/{id}")
+    public ModelAndView listObjectifs(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
+        ObjectiveDAO objectifDAO = new ObjectiveDAO();
+        List objectives = objectifDAO.findByMission(id);
+        request.setAttribute("objectives", objectives);
         return new ModelAndView("missions/objective/list");
     }
 
-    @RequestMapping(value = "/objectifs/ajouter/{id}")
+    @RequestMapping(value = "/mission/objectifs/ajouter/{id}")
     public ModelAndView addObjective(HttpServletRequest request, HttpServletResponse response) throws Exception {
         List missions = missionDAO.findAll();
         request.setAttribute("missions", missions);

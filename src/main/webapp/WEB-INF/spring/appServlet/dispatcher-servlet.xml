@@ -13,6 +13,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
     <bean name="/games/*.htm" class="com.permispiste.controller.GameController"></bean>
     <bean name="/missions/*.htm" class="com.permispiste.controller.MissionController"></bean>
     <bean name="/trainees/*.htm" class="com.permispiste.controller.TraineeController"></bean>
+    <bean name="/objectives/*.htm" class="com.permispiste.controller.ObjectiveController"></bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >        
          <property name="prefix" value="/WEB-INF/views/"/>

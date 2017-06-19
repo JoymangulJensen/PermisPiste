@@ -132,7 +132,7 @@
                     <li>
                         </c:otherwise>
                         </c:choose>
-                        <a href="/objectives">
+                        <a href="/objectifs">
                             <i class="ti-target"></i>
                             <p>Objectifs</p>
                         </a>

@@ -1,5 +1,7 @@
 package com.permispiste.dao;
 
+import com.permispiste.model.ActionEntity;
+
 import java.util.List;
 
 /**
@@ -15,5 +17,9 @@ public class ActionDAO  extends DAO {
 
     public long count(){
         return super.count("ActionEntity");
+    }
+
+    public ActionEntity find(int id) {
+        return (ActionEntity) find(ActionEntity.class, id);
     }
 }

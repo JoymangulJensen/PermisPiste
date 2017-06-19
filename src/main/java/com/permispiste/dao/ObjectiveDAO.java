@@ -1,9 +1,7 @@
 package com.permispiste.dao;
 
 import com.permispiste.errorhandlers.ServiceHibernateException;
-import com.permispiste.model.MissionEntity;
 import com.permispiste.model.ObjectifEntity;
-import com.permispiste.model.IEntity;
 import com.permispiste.service.ServiceHibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

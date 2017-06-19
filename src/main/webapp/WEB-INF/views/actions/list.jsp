@@ -13,7 +13,9 @@
                     <div class="header">
                         <h4 class="title">
                             Liste des actions
-                            <div class="pull pull-right"><a href="/actions/ajouter">Ajouter</a></div>
+                            <div class="pull pull-right">
+                                <button type="button" class="btn btn-success"><a href="/action/ajouter">Ajouter</a></button>
+                            </div>
                         </h4>
                         <p class="category">Actions disponible pour les apprenants</p>
                     </div>
@@ -23,7 +25,8 @@
                             <th>ID</th>
                             <th>Libellé</th>
                             <th>Score minimum</th>
-                            <th><i class="fa fa-cog" aria-hidden="true"></i></th>
+                            <th>Action a réussir précédemment</th>
+                            <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
                             </thead>
                             <tbody>
                             <c:forEach items="${actions}" var="item">
@@ -31,14 +34,19 @@
                                     <td>${item.numaction}</td>
                                     <td>${item.libaction}</td>
                                     <td>${item.scoremin}</td>
-                                    <th>
-                                        <a href="/actions/editer/${item.numaction}">
-                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                    <td>${item.actionByActNumaction.libaction}</td>
+                                    <td class="text-center">
+                                        <a href="/action/editer/${item.numaction}">
+                                            <button type="button" class="btn btn-success">
+                                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                            </button>
                                         </a>
-                                        <a href="/actions/supprimer/${item.numaction}">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </a>
-                                    </th>
+<%--                                        <a href="/action/supprimer/${item.numaction}">
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                            </button>
+                                        </a>--%>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

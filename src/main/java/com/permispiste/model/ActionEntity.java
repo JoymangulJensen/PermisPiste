@@ -17,6 +17,8 @@ public class ActionEntity implements  IEntity {
 
     private Set<ObjectifEntity> objectives = new HashSet<>();
 
+    private Integer value;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "est_associe", joinColumns = {
             @JoinColumn(name = "numaction", nullable = false, updatable = false) },
@@ -90,5 +92,14 @@ public class ActionEntity implements  IEntity {
 
     public void setActionByActNumaction(ActionEntity actionByActNumaction) {
         this.actionByActNumaction = actionByActNumaction;
+    }
+
+    @Transient
+    public Integer getValue() {
+        return value;
+    }
+
+    public void setValue(Integer value) {
+        this.value = value;
     }
 }

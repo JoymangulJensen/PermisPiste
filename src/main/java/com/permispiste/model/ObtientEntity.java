@@ -6,14 +6,12 @@ import javax.persistence.*;
  * Created by seljo on 5/4/2017.
  */
 @Entity
-@Table(name = "obtient", schema = "permispiste", catalog = "")
+@Table(name = "obtient", schema = "permispiste")
 @IdClass(ObtientEntityPK.class)
-public class ObtientEntity {
+public class ObtientEntity implements IEntity {
     private int numapprenant;
     private int numaction;
     private Integer valeur;
-    private ApprenantEntity apprenantByNumapprenant;
-    private ActionEntity actionByNumaction;
 
     @Id
     @Column(name = "NUMAPPRENANT")
@@ -65,25 +63,5 @@ public class ObtientEntity {
         result = 31 * result + numaction;
         result = 31 * result + (valeur != null ? valeur.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMAPPRENANT", referencedColumnName = "NUMAPPRENANT", nullable = false)
-    public ApprenantEntity getApprenantByNumapprenant() {
-        return apprenantByNumapprenant;
-    }
-
-    public void setApprenantByNumapprenant(ApprenantEntity apprenantByNumapprenant) {
-        this.apprenantByNumapprenant = apprenantByNumapprenant;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMACTION", referencedColumnName = "NUMACTION", nullable = false)
-    public ActionEntity getActionByNumaction() {
-        return actionByNumaction;
-    }
-
-    public void setActionByNumaction(ActionEntity actionByNumaction) {
-        this.actionByNumaction = actionByNumaction;
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by JOYMANGUL Jensen Selwyn
@@ -36,7 +37,7 @@ public class TraineeController {
     @RequestMapping(value = "/apprenant/ajouter")
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ApprenantEntity trainee = new ApprenantEntity();
-        if(request.getParameter("name") != null){
+        if (request.getParameter("name") != null) {
             trainee.setNomapprenant(request.getParameter("name"));
             trainee.setPrenomapprenant(request.getParameter("firstname"));
             traineeDAO.insert(trainee);
@@ -54,7 +55,7 @@ public class TraineeController {
     @RequestMapping(value = "/apprenant/editer/{id}")
     public ModelAndView edit(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
         ApprenantEntity trainee = traineeDAO.find(id);
-        if(request.getParameter("name") != null && request.getParameter("firstname") != null) {
+        if (request.getParameter("name") != null && request.getParameter("firstname") != null) {
             trainee.setNomapprenant(request.getParameter("name"));
             trainee.setPrenomapprenant(request.getParameter("firstname"));
             traineeDAO.update(trainee);
@@ -126,6 +127,46 @@ public class TraineeController {
         ObjectifEntity objective = new ObjectiveDAO().find(id_objective);
         request.setAttribute("objective", objective);
 
+        // ObtientEntity
+
+        for(ActionEntity actionEntity : objective.getActions()) {
+            ObtientEntity obtient = new ObtientDAO().find(idtrainee, actionEntity.getNumaction());
+            if (obtient != null) {
+                actionEntity.setValue(obtient.getValeur());
+            } else {
+                actionEntity.setValue(-1);
+            }
+        }
+
         return new ModelAndView("trainees/consultActions");
+    }
+
+    @RequestMapping(value = "/apprenant/{id_trainee}/mission/{id_mission}/objectif/{id_objective}/action/{id_action}/realiser")
+    public ModelAndView answerAction(HttpServletRequest request, HttpServletResponse response, @PathVariable("id_trainee") Integer idtrainee, @PathVariable("id_action") Integer id_action, @PathVariable("id_objective") Integer id_objective, @PathVariable("id_mission") Integer id_mission) {
+        // Trainee
+        ApprenantEntity trainee = traineeDAO.find(idtrainee);
+        request.setAttribute("trainee", trainee);
+
+        // Objectif & Actions
+        ActionEntity action = new ActionDAO().find(id_action);
+        request.setAttribute("action", action);
+
+        ObtientDAO obtientDAO = new ObtientDAO();
+
+        ObtientEntity obtient = obtientDAO.find(idtrainee, id_action);
+
+        if (obtient == null) {
+
+            obtient = new ObtientEntity();
+            obtient.setNumaction(action.getNumaction());
+            obtient.setNumapprenant(trainee.getNumapprenant());
+            obtient.setValeur(-1);
+        }
+        Integer value = new Random().nextInt(15) + 5;
+        obtient.setValeur(Math.max(obtient.getValeur(), value));
+
+        obtientDAO.update(obtient);
+
+        return consultActions(request, response, idtrainee, id_objective, id_mission);
     }
 }

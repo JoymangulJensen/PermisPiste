@@ -11,7 +11,6 @@ import javax.persistence.*;
 public class InscriptionEntity implements IEntity {
     private int numapprenant;
     private int numjeu;
-    private ApprenantEntity apprenantByNumapprenant;
 
     @Id
     @Column(name = "NUMAPPRENANT")
@@ -51,15 +50,5 @@ public class InscriptionEntity implements IEntity {
         int result = numapprenant;
         result = 31 * result + numjeu;
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMAPPRENANT", referencedColumnName = "NUMAPPRENANT", nullable = false)
-    public ApprenantEntity getApprenantByNumapprenant() {
-        return apprenantByNumapprenant;
-    }
-
-    public void setApprenantByNumapprenant(ApprenantEntity apprenantByNumapprenant) {
-        this.apprenantByNumapprenant = apprenantByNumapprenant;
     }
 }

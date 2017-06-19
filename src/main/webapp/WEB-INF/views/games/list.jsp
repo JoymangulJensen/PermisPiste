@@ -37,11 +37,11 @@
                                                 <i class="fa fa-edit" aria-hidden="true"></i>
                                             </button>
                                         </a>
-                                        <a href="/game/supprimer/${item.numjeu}">
-                                            <button type="button" class="btn btn-danger">
-                                                <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
-                                            </button>
-                                        </a>
+                                        <%--<a href="/game/supprimer/${item.numjeu}">--%>
+                                            <%--<button type="button" class="btn btn-danger">--%>
+                                                <%--<i class="fa fa-trash" aria-hidden="true" style="color:red"></i>--%>
+                                            <%--</button>--%>
+                                        <%--</a>--%>
                                     </th>
                                 </tr>
                             </c:forEach>

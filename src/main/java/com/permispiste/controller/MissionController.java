@@ -80,4 +80,18 @@ public class MissionController {
         }
         return false;
     }
+
+    @RequestMapping(value = "/objectifs/{id}")
+    public ModelAndView listObjectifs(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List missions = missionDAO.findAll();
+        request.setAttribute("missions", missions);
+        return new ModelAndView("missions/objective/list");
+    }
+
+    @RequestMapping(value = "/objectifs/ajouter/{id}")
+    public ModelAndView addObjective(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List missions = missionDAO.findAll();
+        request.setAttribute("missions", missions);
+        return new ModelAndView("missions/objective/add");
+    }
 }

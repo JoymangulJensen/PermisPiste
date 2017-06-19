@@ -80,7 +80,7 @@ public class TraineeController {
         return new ModelAndView("trainees/games");
     }
 
-    @RequestMapping(value = "/apprenant/missions/{idtrainee}")
+    @RequestMapping(value = "/apprenant/missions/{idtrainee}/{idgame}")
     public ModelAndView mission(HttpServletRequest request, HttpServletResponse response, @PathVariable("idtrainee") Integer idtrainee, @PathVariable("idgame") Integer idgame) {
         ApprenantEntity trainee = traineeDAO.find(idtrainee);
         request.setAttribute("trainee", trainee);

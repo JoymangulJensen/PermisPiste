@@ -60,7 +60,7 @@ public class TraineeController {
     @RequestMapping(value = "/apprenant/editer/{id}")
     public ModelAndView edit(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
         ApprenantEntity trainee = traineeDAO.find(id);
-        if(request.getParameter("name") != null) {
+        if(request.getParameter("name") != null && request.getParameter("firstname") != null) {
             trainee.setNomapprenant(request.getParameter("name"));
             trainee.setPrenomapprenant(request.getParameter("firstname"));
             traineeDAO.update(trainee);

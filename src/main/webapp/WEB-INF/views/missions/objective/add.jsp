@@ -14,7 +14,7 @@
                     <div class="header">
                         <h4 class="title">Ajouter une mission</h4>
                         <br/>
-                        <form class="form-horizontal" method="post" action="/objectif/ajouter/${item.nummission}">
+                        <form class="form-horizontal" method="post" action="/mission/objectif/ajouter/${mission.nummission}">
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="game_id">Jeu : </label>
                                 <div class="col-sm-10">

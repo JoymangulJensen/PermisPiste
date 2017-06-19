@@ -4,6 +4,7 @@ import com.permispiste.dao.FixeDAO;
 import com.permispiste.dao.GameDAO;
 import com.permispiste.dao.MissionDAO;
 import com.permispiste.dao.ObjectiveDAO;
+import com.permispiste.model.FixeEntity;
 import com.permispiste.model.JeuEntity;
 import com.permispiste.model.MissionEntity;
 import org.springframework.stereotype.Controller;
@@ -99,6 +100,20 @@ public class MissionController {
         ObjectiveDAO objectiveDAO = new ObjectiveDAO();
         List objectives = objectiveDAO.findAll();
         request.setAttribute("objectives", objectives);
+
+        MissionEntity mission = missionDAO.find(idmission);
+        request.setAttribute("mission", mission);
+
+        if(request.getParameter("game_id") != null){
+            System.out.println("------------------------------------------------------------------------------------------------------");
+            System.out.println(request.getParameter("game_id"));
+            FixeEntity fixeEntity = new FixeEntity();
+            fixeEntity.setNummission(idmission);
+            fixeEntity.setNumobjectif(Integer.parseInt(request.getParameter("game_id")));
+            FixeDAO fixeDAO = new FixeDAO();
+            fixeDAO.update(fixeEntity);
+            return listObjectifs(request, response, idmission);
+        }
         return new ModelAndView("missions/objective/add");
     }
 

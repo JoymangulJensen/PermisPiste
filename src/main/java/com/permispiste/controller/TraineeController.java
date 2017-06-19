@@ -1,13 +1,7 @@
 package com.permispiste.controller;
 
-import com.permispiste.dao.GameDAO;
-import com.permispiste.dao.InscriptionDAO;
-import com.permispiste.dao.MissionDAO;
-import com.permispiste.dao.TraineeDAO;
-import com.permispiste.model.ApprenantEntity;
-import com.permispiste.model.IEntity;
-import com.permispiste.model.InscriptionEntity;
-import com.permispiste.model.JeuEntity;
+import com.permispiste.dao.*;
+import com.permispiste.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -116,5 +110,22 @@ public class TraineeController {
             return games(request, response, idtrainee);
         }
         return new ModelAndView("trainees/inscription");
+    }
+
+    @RequestMapping(value = "/apprenant/{id_trainee}/mission/{id_mission}/objectif/{id_objective}")
+    public ModelAndView consultActions(HttpServletRequest request, HttpServletResponse response, @PathVariable("id_trainee") Integer idtrainee, @PathVariable("id_objective") Integer id_objective, @PathVariable("id_mission") Integer id_mission) {
+        // Trainee
+        ApprenantEntity trainee = traineeDAO.find(idtrainee);
+        request.setAttribute("trainee", trainee);
+
+        // Mission
+        MissionEntity mission = new MissionDAO().find(id_mission);
+        request.setAttribute("mission", mission);
+
+        // Objectif & Actions
+        ObjectifEntity objective = new ObjectiveDAO().find(id_objective);
+        request.setAttribute("objective", objective);
+
+        return new ModelAndView("trainees/consultActions");
     }
 }

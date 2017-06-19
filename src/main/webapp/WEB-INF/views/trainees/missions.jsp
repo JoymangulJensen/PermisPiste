@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="header">
                         <h4 class="title">
-                            Liste des missions du jeux "${game.libellejeu}" de ${trainee.nomapprenant} ${trainee.prenomapprenant}
+                            Liste des missions du jeu "${game.libellejeu}" de ${trainee.nomapprenant} ${trainee.prenomapprenant}
                         </h4>
                         <p class="category">Cliquez sur la mission pour voir les objectifs</p>
                     </div>

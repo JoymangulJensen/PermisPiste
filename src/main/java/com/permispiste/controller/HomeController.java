@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView Afficheindex2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ModelAndView Afficheindex(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ActionDAO actionDAO =  new ActionDAO();
         long countAction = actionDAO.count();
 
@@ -38,5 +38,14 @@ public class HomeController {
         request.setAttribute("countMission", countMission);
         request.setAttribute("countTrainee", counttrainee);
         return new ModelAndView("home");
+    }
+
+    @RequestMapping(value = "/connexion")
+    public ModelAndView connect(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String label = request.getParameter("label");
+        if(label != null){
+            return Afficheindex(request, response);
+        }
+        return new ModelAndView("connection");
     }
 }

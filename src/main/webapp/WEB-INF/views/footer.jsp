@@ -41,8 +41,19 @@
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="/resources/assets/js/paper-dashboard.js"></script>
 
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="/resources/assets/js/demo.js"></script>
+<script>
+    function error() {
+        document.location.href="/";
+        $.notify({
+            icon: 'ti-na',
+            message: "Erreur de connexion."
+
+        }, {
+            type: 'danger',
+            timer: 2000
+        });
+    }
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {

@@ -158,15 +158,10 @@
                     <ul class="nav navbar-nav navbar-right">
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-bell"></i>
-                                <p class="notification">5</p>
-                                <p>Parametre</p>
-                                <b class="caret"></b>
+                            <a href="/connexion" class="dropdown-toggle">
+                                <i class="ti-user"></i>
+                                <p>Connexion</p>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Connexion</a></li>
-                            </ul>
                         </li>
                     </ul>
 

@@ -2762,3 +2762,7 @@ textarea.form-control {
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch; } }
+
+.nice_airport img {
+  width:100%;
+}

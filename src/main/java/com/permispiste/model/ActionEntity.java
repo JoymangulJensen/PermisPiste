@@ -1,6 +1,8 @@
 package com.permispiste.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by seljo on 5/4/2017.
@@ -12,6 +14,21 @@ public class ActionEntity implements  IEntity {
     private String libaction;
     private Integer scoremin;
     private ActionEntity actionByActNumaction;
+
+    private Set<ObjectifEntity> objectives = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "est_associe", joinColumns = {
+            @JoinColumn(name = "numaction", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "numobjectif",
+                    nullable = false, updatable = false) })
+    public Set<ObjectifEntity> getObjectives() {
+        return objectives;
+    }
+
+    public void setObjectives(Set<ObjectifEntity> objectives) {
+        this.objectives = objectives;
+    }
 
     @Id
     @Column(name = "NUMACTION")

@@ -43,7 +43,7 @@
                                         <a href="/apprenant/editer/${item.numapprenant}">
                                             <button type="button" class="btn btn-success">
                                             <i class="fa fa-edit" aria-hidden="true"></i>
-                                        </button>
+                                            </button>
                                         </a>
                                         <a href="/apprenant/supprimer/${item.numapprenant}">
                                             <button type="button" class="btn btn-danger">

@@ -14,6 +14,18 @@ public class ObjectifEntity implements IEntity {
     private String libobectif;
 
     private Set<MissionEntity> missions = new HashSet<>();
+    private Set<ActionEntity> actions = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "objectives")
+    public Set<ActionEntity> getActions() {
+        return actions;
+    }
+
+    public void setActions(Set<ActionEntity> actions) {
+        this.actions = actions;
+    }
+
+
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "objectives")
     public Set<MissionEntity> getMissions() {

@@ -123,6 +123,20 @@
                         <p>Actions</p>
                     </a>
                 </li>
+
+                    <c:choose>
+                    <c:when test="${param.titre=='Objectives'}">
+                    <li class="active">
+                        </c:when>
+                        <c:otherwise>
+                    <li>
+                        </c:otherwise>
+                        </c:choose>
+                        <a href="/objectives">
+                            <i class="ti-target"></i>
+                            <p>Objectifs</p>
+                        </a>
+                    </li>
             </ul>
         </div>
     </div>

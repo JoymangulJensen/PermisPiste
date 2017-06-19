@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Gaetan on 18/06/2017.
  * DAO to Trainee
  */
-public class ObjectifDAO extends DAO {
+public class ObjectiveDAO extends DAO {
 
     public List findAll() {
         String request = "SELECT a FROM ObjectifEntity a ORDER BY a.numobjectif";

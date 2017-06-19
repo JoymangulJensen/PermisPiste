@@ -31,7 +31,7 @@ public class ServiceHibernate {
         try {
             s = (Session) session.get();
             // Open a new Session, if this Thread has none yet
-            if (s == null) {
+            if (s == null || ! s.isOpen()) {
                 s = sessionFactory.openSession();
                 session.set(s);
             }

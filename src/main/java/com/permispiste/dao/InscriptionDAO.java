@@ -33,8 +33,4 @@ public class InscriptionDAO extends DAO {
         return result;
     }
 
-    public void insert(InscriptionEntity entity) {
-
-    }
-
 }

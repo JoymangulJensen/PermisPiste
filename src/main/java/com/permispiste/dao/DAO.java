@@ -57,7 +57,7 @@ public abstract class DAO {
             throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
-                session.close();
+//                session.close();
             }
         }
 
@@ -80,7 +80,7 @@ public abstract class DAO {
             throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
-                //session.close();
+//                session.close();
             }
         }
         return entity;

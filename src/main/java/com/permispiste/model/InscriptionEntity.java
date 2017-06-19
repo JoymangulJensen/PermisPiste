@@ -6,9 +6,9 @@ import javax.persistence.*;
  * Created by seljo on 5/4/2017.
  */
 @Entity
-@Table(name = "inscription", schema = "permispiste", catalog = "")
+@Table(name = "inscription", schema = "permispiste")
 @IdClass(InscriptionEntityPK.class)
-public class InscriptionEntity {
+public class InscriptionEntity implements IEntity {
     private int numapprenant;
     private int numjeu;
     private ApprenantEntity apprenantByNumapprenant;

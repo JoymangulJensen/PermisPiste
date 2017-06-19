@@ -1,9 +1,12 @@
 package com.permispiste.controller;
 
 import com.permispiste.dao.GameDAO;
+import com.permispiste.dao.InscriptionDAO;
 import com.permispiste.dao.MissionDAO;
 import com.permispiste.dao.TraineeDAO;
 import com.permispiste.model.ApprenantEntity;
+import com.permispiste.model.IEntity;
+import com.permispiste.model.InscriptionEntity;
 import com.permispiste.model.JeuEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,17 +71,17 @@ public class TraineeController {
     }
 
     @RequestMapping(value = "/apprenant/games/{id}", method = RequestMethod.GET)
-    public ModelAndView game(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) throws Exception {
+    public ModelAndView games(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) {
         ApprenantEntity trainee = traineeDAO.find(id);
         request.setAttribute("trainee", trainee);
         GameDAO gameDAO = new GameDAO();
-        List games = gameDAO.findAll();
+        List games = gameDAO.findByTrainee(id);
         request.setAttribute("games", games);
         return new ModelAndView("trainees/games");
     }
 
-    @RequestMapping(value = "/apprenant/missions/{idtrainee}/{idgame}", method = RequestMethod.GET)
-    public ModelAndView mission(HttpServletRequest request, HttpServletResponse response, @PathVariable("idtrainee") Integer idtrainee, @PathVariable("idgame") Integer idgame) throws Exception {
+    @RequestMapping(value = "/apprenant/missions/{idtrainee}")
+    public ModelAndView mission(HttpServletRequest request, HttpServletResponse response, @PathVariable("idtrainee") Integer idtrainee, @PathVariable("idgame") Integer idgame) {
         ApprenantEntity trainee = traineeDAO.find(idtrainee);
         request.setAttribute("trainee", trainee);
 
@@ -90,5 +93,28 @@ public class TraineeController {
         List missions = missionDAO.findByGame(game);
         request.setAttribute("missions", missions);
         return new ModelAndView("trainees/missions");
+    }
+
+    @RequestMapping(value = "/apprenant/{idtrainee}/inscription")
+    public ModelAndView register(HttpServletRequest request, HttpServletResponse response, @PathVariable("idtrainee") Integer idtrainee) {
+        // Games
+        List games = new GameDAO().findAll();
+        request.setAttribute("games", games);
+        // Trainee
+        ApprenantEntity trainee = traineeDAO.find(idtrainee);
+        request.setAttribute("trainee", trainee);
+
+        InscriptionDAO inscriptionDAO = new InscriptionDAO();
+        String id_game_string = request.getParameter("game_id");
+        int id_game;
+
+        if (id_game_string != null && inscriptionDAO.countByTraineeAndGame(idtrainee, id_game = Integer.parseInt(id_game_string)) == 0) {
+            InscriptionEntity inscription = new InscriptionEntity();
+            inscription.setNumapprenant(idtrainee);
+            inscription.setNumjeu(id_game);
+            inscriptionDAO.insert(inscription);
+            return games(request, response, idtrainee);
+        }
+        return new ModelAndView("trainees/inscription");
     }
 }

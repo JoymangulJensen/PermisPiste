@@ -34,8 +34,11 @@
                                     <td>${item.nomapprenant}</td>
                                     <td>${item.prenomapprenant}</td>
                                     <td class="text-center">
+                                        <a href="/apprenant/${item.numapprenant}/inscription">
+                                            <button type="button" class="btn btn-primary">Inscription à un jeu</button>
+                                        </a>
                                         <a href="/apprenant/games/${item.numapprenant}">
-                                            <button type="button" class="btn btn-primary">jeux</button>
+                                            <button type="button" class="btn btn-primary">Jeux inscrits</button>
                                         </a>
                                         <a href="/apprenant/editer/${item.numapprenant}">
                                             <button type="button" class="btn btn-success">

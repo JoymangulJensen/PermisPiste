@@ -1,7 +1,11 @@
 package com.permispiste.dao;
 
+import com.permispiste.errorhandlers.ServiceHibernateException;
 import com.permispiste.model.ApprenantEntity;
-import com.permispiste.model.IEntity;
+import com.permispiste.service.ServiceHibernate;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -22,6 +26,25 @@ public class TraineeDAO extends DAO {
 
     public ApprenantEntity find(int id) {
         return (ApprenantEntity) find(ApprenantEntity.class, id);
+    }
+
+    public List findByGame(int idgame) {
+        Session session = null;
+        List result = null;
+        String request = "SELECT a FROM ApprenantEntity a, InscriptionEntity i WHERE i.numapprenant=a.numapprenant and i.numjeu=:id_game";
+        try {
+            session = ServiceHibernate.currentSession();
+            Query query = session.createQuery(request);
+            query.setParameter("id_game",idgame);
+            result = query.getResultList();
+        } catch (HibernateException ex) {
+            throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + ex.getMessage());
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return result;
     }
 
 }

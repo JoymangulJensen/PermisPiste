@@ -19,7 +19,7 @@
                                 <label class="control-label col-sm-2" for="game_id">Jeu : </label>
                                 <div class="col-sm-10">
                                     <select id="game_id" name="game_id" class="form-control">
-                                        <option value="NONE">Choisir objectif</option>
+                                        <option value="NONE">Choisir un objectif</option>
                                         <c:forEach items="${objectives}" var="item">
                                             <option value="${item.numobjectif}">${item.libobectif}</option>
                                         </c:forEach>

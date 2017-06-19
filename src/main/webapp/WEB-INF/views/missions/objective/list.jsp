@@ -15,7 +15,7 @@
                         <h4 class="title">
                             Les objectifs associés
                             <div class="pull pull-right">
-                                <button type="button" class="btn btn-success"><a href="/objectif/ajouter/${item.nummission}">Ajouter un nouvel objectif</a></button>
+                                <button type="button" class="btn btn-success"><a href="/mission/objectif/ajouter/${mission.nummission}">Ajouter un nouvel objectif</a></button>
                             </div>
                         </h4>
                         <p class="category">Les objectifs associés à la mission</p>
@@ -33,7 +33,7 @@
                                     <td>${item.numobjectif}</td>
                                     <td>${item.libobectif}</td>
                                     <th class="text-center">
-                                        <a href="/objectif/supprimer/${item.numobjectif}" >
+                                        <a href="/mission/objectif/supprimer/${mission.nummission}/${item.numobjectif}" >
                                             <button type="button" class="btn btn-danger">
                                                 <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
                                             </button>

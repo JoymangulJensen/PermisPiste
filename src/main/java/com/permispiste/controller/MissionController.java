@@ -1,5 +1,6 @@
 package com.permispiste.controller;
 
+import com.permispiste.dao.FixeDAO;
 import com.permispiste.dao.GameDAO;
 import com.permispiste.dao.MissionDAO;
 import com.permispiste.dao.ObjectiveDAO;
@@ -87,13 +88,24 @@ public class MissionController {
         ObjectiveDAO objectifDAO = new ObjectiveDAO();
         List objectives = objectifDAO.findByMission(id);
         request.setAttribute("objectives", objectives);
+
+        MissionEntity mission = missionDAO.find(id);
+        request.setAttribute("mission", mission);
         return new ModelAndView("missions/objective/list");
     }
 
-    @RequestMapping(value = "/mission/objectifs/ajouter/{id}")
-    public ModelAndView addObjective(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List missions = missionDAO.findAll();
-        request.setAttribute("missions", missions);
+    @RequestMapping(value = "/mission/objectif/ajouter/{idmission}")
+    public ModelAndView addObjective(HttpServletRequest request, HttpServletResponse response, @PathVariable("idmission") int idmission) throws Exception {
+        ObjectiveDAO objectiveDAO = new ObjectiveDAO();
+        List objectives = objectiveDAO.findAll();
+        request.setAttribute("objectives", objectives);
         return new ModelAndView("missions/objective/add");
+    }
+
+    @RequestMapping(value = "/mission/objectif/supprimer/{idmission}/{idobjectif}")
+    public ModelAndView removeObjectif(HttpServletRequest request, HttpServletResponse response, @PathVariable("idmission") int idmission, @PathVariable("idobjectif") int idobjectif) throws Exception {
+        FixeDAO fixeDAO = new FixeDAO();
+        fixeDAO.delete(idmission, idobjectif);
+        return listObjectifs(request, response, idmission);
     }
 }

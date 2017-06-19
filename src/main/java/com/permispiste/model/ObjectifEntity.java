@@ -1,6 +1,8 @@
 package com.permispiste.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by seljo on 5/4/2017.
@@ -10,6 +12,17 @@ import javax.persistence.*;
 public class ObjectifEntity implements IEntity {
     private int numobjectif;
     private String libobectif;
+
+    private Set<MissionEntity> missions = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "objectives")
+    public Set<MissionEntity> getMissions() {
+        return missions;
+    }
+
+    public void setMissions(Set<MissionEntity> missions) {
+        this.missions = missions;
+    }
 
     @Id
     @Column(name = "NUMOBJECTIF")

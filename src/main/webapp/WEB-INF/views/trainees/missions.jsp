@@ -14,35 +14,42 @@
                         <h4 class="title">
                             Liste des missions du jeux "${game.libellejeu}" de ${trainee.nomapprenant} ${trainee.prenomapprenant}
                         </h4>
-                        <p class="category">Apprenants de permis</p>
+                        <p class="category">Cliquez sur la mission pour voir les objectifs</p>
                     </div>
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-striped">
-                            <thead>
-                            <th>ID</th>
-                            <th>Libelle</th>
-                            <th>Voir résultat meilleur action associé</th>
-                            <th>Voir objectif demandé</th>
-                            <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${missions}" var="item">
-                                <tr>
-                                    <td>${item.nummission}</td>
-                                    <td>${item.libmission}</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <th class="text-center">
-                                        <a href="">
-                                            <button type="button" class="btn btn-success">Réaliser une action</button>
-                                        </a>
-                                    </th>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+
+                    <div id="accordion">
+                        <c:forEach items="${missions}" var="item">
+                            <h3>${item.nummission} - ${item.libmission}</h3>
+                            <div>
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <th>ID</th>
+                                        <th>Libelle</th>
+                                        <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${item.objectives}" var="objective">
+                                            <tr>
+                                                <td>${objective.numobjectif}</td>
+                                                <td>${objective.libobectif}</td>
+                                                <th class="text-center">
+                                                    <a href="/apprenant/${trainee.numapprenant}/mission/${item.nummission}/objectif/${objective.numobjectif}">
+                                                        <button type="button" class="btn btn-success">
+                                                            Voir actions
+                                                        </button>
+                                                    </a>
+                                                </th>
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
-                </div>
+
+
             </div>
 
         </div>

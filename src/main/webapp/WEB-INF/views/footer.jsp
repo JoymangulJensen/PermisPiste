@@ -24,7 +24,9 @@
 </body>
 
 <!-- Core JS Files -->
-<script src="/resources/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<%--<script src="/resources/assets/js/jquery-1.10.2.js" type="text/javascript"></script>--%>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!-- Checkbox, Radio & Switch Plugins -->
@@ -35,9 +37,6 @@
 
 <!-- Notifications Plugin -->
 <script src="/resources/assets/js/bootstrap-notify.js"></script>
-
-<!-- Google Maps Plugin -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="/resources/assets/js/paper-dashboard.js"></script>
@@ -58,6 +57,10 @@
             type: 'success',
             timer: 2000
         });
+
+        $( function() {
+            $( "#accordion" ).accordion();
+        } );
 
     });
 </script>

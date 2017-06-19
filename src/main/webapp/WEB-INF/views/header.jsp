@@ -31,7 +31,8 @@
     <spring:url value="/resources/css/demo.css" var="demoCss"/>
     <link href="${demoCss}" rel="stylesheet"/>
     <link href="/resources/assets/css/themify-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
 

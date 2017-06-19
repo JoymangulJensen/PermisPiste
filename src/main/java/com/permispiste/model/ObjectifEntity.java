@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by seljo on 5/4/2017.
  */
 @Entity
-@Table(name = "objectif", schema = "permispiste", catalog = "")
+@Table(name = "objectif", schema = "permispiste")
 public class ObjectifEntity implements IEntity {
     private int numobjectif;
     private String libobectif;

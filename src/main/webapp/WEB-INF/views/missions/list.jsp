@@ -35,7 +35,7 @@
                                     <td>${item.libmission}</td>
                                     <td>${item.jeuByNumjeu.libellejeu}</td>
                                     <th class="text-center">
-                                        <a href="/objectifs/${item.nummission}">
+                                        <a href="/mission/objectifs/${item.nummission}">
                                             <button type="button" class="btn btn-primary">Objectifs</button>
                                         </a>
 

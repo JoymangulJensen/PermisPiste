@@ -1,7 +1,13 @@
 package com.permispiste.dao;
 
+import com.permispiste.errorhandlers.ServiceHibernateException;
+import com.permispiste.model.MissionEntity;
 import com.permispiste.model.ObjectifEntity;
 import com.permispiste.model.IEntity;
+import com.permispiste.service.ServiceHibernate;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -22,6 +28,24 @@ public class ObjectiveDAO extends DAO {
 
     public ObjectifEntity find(int id) {
         return (ObjectifEntity) find(ObjectifEntity.class, id);
+    }
+
+    public List findByMission(int idmission) {
+        Session session = null;
+        List result = null;
+        String request = "SELECT o FROM ObjectifEntity o, FixeEntity f WHERE o.numobjectif=f.numobjectif and f.nummission =:idmission";
+        try {
+            session = ServiceHibernate.currentSession();
+            Query query = session.createQuery(request);
+            query.setParameter("idmission",idmission);
+            result = query.getResultList();
+        } catch (HibernateException ex) {
+            throw new ServiceHibernateException("Impossible d'accèder à la SessionFactory: " + ex.getMessage());
+        } finally {
+            if (session != null && session.isOpen()) {
+            }
+        }
+        return result;
     }
 
 }
